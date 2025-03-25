@@ -1,6 +1,8 @@
+import gzip
 import pickle
 import streamlit as st
 import requests
+import pandas as pd
 
 API_KEY = "ec6689028c28f8828e66c8bffaa192d1"
 
@@ -18,7 +20,12 @@ def recommend(movie):
     if not movie:
         return []
 
-    index = movies[movies['title'] == movie].index[0]
+    # ✅ Prevent IndexError if movie is not found
+    movie_index = movies[movies['title'] == movie].index
+    if movie_index.empty:
+        return []
+
+    index = movie_index[0]
     distances = sorted(enumerate(similarity[index]), key=lambda x: x[1], reverse=True)
 
     recommendations = []
@@ -31,9 +38,14 @@ def recommend(movie):
 
     return recommendations
 
-# Load datasets
-movies = pickle.load(open(r'F:\XboxGames\artifacts\movie_list.pkl', 'rb'))
-similarity = pickle.load(open(r'F:\XboxGames\artifacts\similarity.pkl', 'rb'))
+# ✅ Load datasets correctly
+with gzip.open("movie_list.pkl.gz", "rb") as f:
+    movies = pickle.load(f)
+
+with gzip.open("similarity.pkl.gz", "rb") as f:
+    similarity = pickle.load(f)
+# ✅ Ensure movies is a DataFrame
+movies = pd.DataFrame(movies)
 
 st.set_page_config(page_title="Movie Recommender", layout="wide")
 
@@ -44,25 +56,32 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-selected_movie = st.selectbox("🔍 Search for a movie...", movies['title'].values, index=None)
+# ✅ Handle cases where no movie is selected
+selected_movie = st.selectbox("🔍 Search for a movie...", movies['title'].values, index=0)
 
 if st.button("🔮 Show Recommendations"):
-    with st.spinner("Finding similar movies..."):
-        recommended_movies = recommend(selected_movie)
+    if not selected_movie:
+        st.warning("⚠️ Please select a movie before getting recommendations.")
+    else:
+        with st.spinner("Finding similar movies..."):
+            recommended_movies = recommend(selected_movie)
 
-    st.markdown("---")
-    
-    for i in range(0, len(recommended_movies), 5):
-        cols = st.columns(5)
-        for j, col in enumerate(cols):
-            if i + j < len(recommended_movies):
-                name, poster, rating, year = recommended_movies[i + j]
-                with col:
-                    st.markdown(f"""
-                        <div style="text-align: center;">
-                            <img src="{poster}" width="150" style="border-radius: 10px;"/>
-                            <p style="font-weight: bold; font-size: 16px; color: white;">{name}</p>
-                            <p style="color: gold; font-size: 14px;">⭐ IMDb: {rating}</p>
-                            <p style="color: lightgray; font-size: 12px;">📅 Year: {year}</p>
-                        </div>
-                    """, unsafe_allow_html=True)
+        st.markdown("---")
+
+        if recommended_movies:
+            for i in range(0, len(recommended_movies), 5):
+                cols = st.columns(5)
+                for j, col in enumerate(cols):
+                    if i + j < len(recommended_movies):
+                        name, poster, rating, year = recommended_movies[i + j]
+                        with col:
+                            st.markdown(f"""
+                                <div style="text-align: center;">
+                                    <img src="{poster}" width="150" style="border-radius: 10px;"/>
+                                    <p style="font-weight: bold; font-size: 16px; color: white;">{name}</p>
+                                    <p style="color: gold; font-size: 14px;">⭐ IMDb: {rating}</p>
+                                    <p style="color: lightgray; font-size: 12px;">📅 Year: {year}</p>
+                                </div>
+                            """, unsafe_allow_html=True)
+        else:
+            st.error("❌ No recommendations found for the selected movie.")

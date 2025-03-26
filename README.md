@@ -8,28 +8,22 @@ A Movie Recommendation System built using Streamlit and TMDB API. This project s
 - Preprocessed PKL files for efficient data handling  
 
 
-Installation
+##Installation
 
-Prerequisites
+##Prerequisites
+-Ensure you have Python 3.7+ installed.
 
-Ensure you have Python 3.7+ installed.
+#Steps
+-Clone the repository:
+-git clone https://github.com/yourusername/Movie-Recommender.git
+-cd Movie-Recommender
 
-Steps
+#Install dependencies:
+-pip install -r requirements.txt
+-Run the Streamlit app:
+-streamlit run app.py
 
-Clone the repository:
-
-git clone https://github.com/yourusername/Movie-Recommender.git
-cd Movie-Recommender
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-Run the Streamlit app:
-
-streamlit run app.py
-
-File Structure
+#File Structure
 
 Movie-Recommender/
 │── app.py              # Main Streamlit app
@@ -39,36 +33,23 @@ Movie-Recommender/
 │── movie_list.pkl.gz   # Preprocessed movie dataset
 │── README.md           # Project documentation
 
-Usage
+#Usage
 
-Enter a movie name in the search bar.
+-Enter a movie name in the search bar.
+-The system will fetch similar movies using collaborative filtering.
+-Movie details such as posters and descriptions are fetched from TMDB API.
 
-The system will fetch similar movies using collaborative filtering.
 
-Movie details such as posters and descriptions are fetched from TMDB API.
+#Technologies Used
+-Python
+-Streamlit
+-TMDB API
+-Pandas
+-Numpy
 
-Screenshots
-
-(Add relevant screenshots of the application UI here.)
-
-Technologies Used
-
-Python
-
-Streamlit
-
-TMDB API
-
-Pandas
-
-Numpy
-
-Future Enhancements
-
-Add content-based filtering
-
-Improve UI/UX
-
-Deploy on Streamlit Cloud / Heroku
+#Future Enhancements
+-Add content-based filtering
+-Improve UI/UX
+-Deploy on Streamlit Cloud / Heroku
 
 

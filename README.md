@@ -20,10 +20,14 @@ A **Movie Recommendation System** built using **Streamlit** and **TMDB API**. Th
   git clone https://github.com/yourusername/Movie-Recommender.git
   cd Movie-Recommender
 
-#Install dependencies:
--pip install -r requirements.txt
--Run the Streamlit app:
--streamlit run app.py
+- Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+
+- Run the Streamlit app:
+  ```bash
+  streamlit run app.py
+
 
 #File Structure
 
@@ -35,23 +39,23 @@ Movie-Recommender/
 │── movie_list.pkl.gz   # Preprocessed movie dataset
 │── README.md           # Project documentation
 
-#Usage
+# Usage
 
--Enter a movie name in the search bar.
--The system will fetch similar movies using collaborative filtering.
--Movie details such as posters and descriptions are fetched from TMDB API.
+- Enter a movie name in the search bar.
+- The system will fetch similar movies using collaborative filtering.
+- Movie details such as posters and descriptions are fetched from TMDB API.
 
 
-#Technologies Used
--Python
--Streamlit
--TMDB API
--Pandas
--Numpy
+# Technologies Used
+- Python
+- Streamlit
+- TMDB API
+- Pandas
+- Numpy
 
-#Future Enhancements
--Add content-based filtering
--Improve UI/UX
--Deploy on Streamlit Cloud / Heroku
+# Future Enhancements
+- Add content-based filtering
+- Improve UI/UX
+- Deploy on Streamlit Cloud / Heroku
 
 

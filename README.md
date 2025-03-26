@@ -1,22 +1,24 @@
 # Movie-Recommender
-A Movie Recommendation System built using Streamlit and TMDB API. This project suggests movies based on a collaborative filtering approach and utilizes preprocessed PKL files for recommendations.
+# Movie Recommender System
+
+A **Movie Recommendation System** built using **Streamlit** and **TMDB API**. This project suggests movies based on a collaborative filtering approach and utilizes preprocessed PKL files for recommendations.
+
 ## Features
-- Suggests similar movies based on user input  
-- Uses collaborative filtering for recommendations  
-- Built with Streamlit for an interactive UI  
-- Utilizes TMDB API for fetching movie details  
-- Preprocessed PKL files for efficient data handling  
+- Suggests similar movies based on user input
+- Uses **collaborative filtering** for recommendations
+- Built with **Streamlit** for an interactive UI
+- Utilizes **TMDB API** for fetching movie details
+- Preprocessed PKL files for efficient data handling
 
+## Installation
+### Prerequisites
+- Ensure you have **Python 3.7+** installed.
 
-##Installation
-
-##Prerequisites
--Ensure you have Python 3.7+ installed.
-
-#Steps
--Clone the repository:
--git clone https://github.com/yourusername/Movie-Recommender.git
--cd Movie-Recommender
+### Steps
+- Clone the repository:
+  ```bash
+  git clone https://github.com/yourusername/Movie-Recommender.git
+  cd Movie-Recommender
 
 #Install dependencies:
 -pip install -r requirements.txt

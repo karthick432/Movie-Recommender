@@ -1,12 +1,12 @@
 # Movie-Recommender
 A Movie Recommendation System built using Streamlit and TMDB API. This project suggests movies based on a collaborative filtering approach and utilizes preprocessed PKL files for recommendations.
+## Features
+- Suggests similar movies based on user input  
+- Uses collaborative filtering for recommendations  
+- Built with Streamlit for an interactive UI  
+- Utilizes TMDB API for fetching movie details  
+- Preprocessed PKL files for efficient data handling  
 
-Features
-    -Suggests similar movies based on user input
-    -Uses collaborative filtering for recommendations
-    -Built with Streamlit for an interactive UI
-    -Utilizes TMDB API for fetching movie details
-    -Preprocessed PKL files for efficient data handling
 
 Installation
 
